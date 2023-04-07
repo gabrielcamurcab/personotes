@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NotesCreateRequest;
+use App\Http\Requests\NotesUpdateRequest;
 use App\Http\Resources\NotesResource;
 use App\Models\Notes;
 use App\Models\User;
@@ -24,5 +25,14 @@ class NotesController extends Controller
 
     public function show(Notes $note) {
         return new NotesResource($note);
+    }
+
+    public function update(Notes $note, NotesUpdateRequest $request) {
+        $input = $request->validated();
+
+        $note->fill($input);
+        $note->save();
+
+        return new NotesResource($note->fresh());
     }
 }

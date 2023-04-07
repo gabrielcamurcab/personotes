@@ -28,5 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'notes'], function (){
     Route::get('index', [NotesController::class, 'index'])->name('api.notes.index');
     Route::get('{note}', [NotesController::class, 'show'])->name('api.notes.show');
+    Route::put('{note}', [NotesController::class, 'update'])->name('api.notes.update');
+    Route::delete('{note}', [NotesController::class, 'delete'])->name('api.notes.delete');
     Route::post('create', [NotesController::class, 'create'])->name('api.notes.create');
 });
