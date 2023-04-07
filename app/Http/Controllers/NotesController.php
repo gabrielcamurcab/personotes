@@ -35,4 +35,8 @@ class NotesController extends Controller
 
         return new NotesResource($note->fresh());
     }
+
+    public function delete(Notes $note) {
+        $note->delete();
+    }
 }
