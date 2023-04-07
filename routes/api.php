@@ -26,5 +26,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'notes'], function (){
+    Route::get('index', [NotesController::class, 'index'])->name('api.notes.index');
+    Route::get('{note}', [NotesController::class, 'show'])->name('api.notes.show');
     Route::post('create', [NotesController::class, 'create'])->name('api.notes.create');
 });
