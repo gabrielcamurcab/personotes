@@ -28,6 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'user'], function() {
     Route::get('', [UserController::class, 'index'])->name('api.user.index');
+    Route::put('', [UserController::class, 'update'])->name('api.user.update');
 });
 
 Route::group(['prefix' => 'notes'], function() {
