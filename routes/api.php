@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', [AuthController::class, 'register'])->name('api.register');
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('register', [AuthController::class, 'register'])->name('api.auth.register');
+    Route::post('login', [AuthController::class, 'login'])->name('api.auth.login');
+});
+
+Route::group(['prefix' => 'notes'], function (){
+    Route::post('create', [NotesController::class, 'create'])->name('api.notes.create');
+});

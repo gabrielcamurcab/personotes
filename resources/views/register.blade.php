@@ -7,7 +7,7 @@
     <title>PersoNotes - Cadastro</title>
 </head>
 <body>
-    <form method="POST" action="{{ route('api.register') }}">
+    <form method="POST" action="{{ route('api.auth.register') }}">
         @csrf
         <input type="text" name="name" placeholder="Nome">
         <input type="email" name="email" placeholder="Email">
