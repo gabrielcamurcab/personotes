@@ -22,7 +22,6 @@ class NotesCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|numeric',
             'title' => 'required|string',
             'text' => 'required|string',
         ];

@@ -11,7 +11,7 @@ class NotesController extends Controller
     public function create(NotesCreateRequest $request) {
         $input = $request->validated();
 
-        $note = Notes::create($input);
+        $note = auth()->user()->notes()->create($input);
 
         return $note;
     }
