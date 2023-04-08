@@ -19,7 +19,13 @@
             @csrf
             <input type="text" name="name" placeholder="Nome">
             <input type="email" name="email" placeholder="E-mail">
+            @error('email')
+                <div class="alert-danger">{{ $message }}</div>
+            @enderror
             <input type="password" name="password" placeholder="Senha">
+            @error('password')
+                <div class="alert-danger">{{ $message }}</div>
+            @enderror
             <input type="submit" value="Cadastrar">
             <a href="login">Fazer login</a>
         </form>

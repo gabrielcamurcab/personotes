@@ -17,6 +17,9 @@
         <h2>Faça login</h2>
         <form class="login" method="POST" action="{{ route('auth.login') }}">
             @csrf
+            @error('email')
+                <div class="alert-danger">{{ $message }}</div>
+            @enderror
             <input type="email" name="email" placeholder="E-mail">
             <input type="password" name="password" placeholder="Senha">
             <input type="submit" value="Login">
