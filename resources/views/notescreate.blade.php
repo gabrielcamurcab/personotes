@@ -20,8 +20,14 @@
         <h2>Criar anotação</h2>
         <form class="note" method="POST" action="{{ route('notes.create') }}">
             @csrf
+            @error('title')
+                <div class="alert-danger">{{ $message }}</div>
+            @enderror
+            @error('text')
+                <div class="alert-danger">{{ $message }}</div>
+            @enderror
             <input type="text" name="title" placeholder="Titulo">
-            <textarea style="resize: vertical;" name="text" placeholder="Texto"></textarea>
+            <textarea style="resize: none" rows="7" name="text" placeholder="Texto"></textarea>
             <input type="submit" value="Criar">
             <a href="/notes">< Voltar</a>
         </form>

@@ -23,7 +23,7 @@
             @foreach ($notes as $note)
                 <div class="card">
                     <div class="card-title">{{ $note->title }}</div>
-                    <div class="card-text">{{ $note->text }}</div>
+                    <textarea style="resize: none" rows="7" readonly>{{ $note->text }}</textarea><br><br>
                     <div class="card-buttons">
                     <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
                     <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
