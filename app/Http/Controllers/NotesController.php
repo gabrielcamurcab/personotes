@@ -34,15 +34,25 @@ class NotesController extends Controller
         return new NotesResource($note);
     }
 
-    public function update(Notes $note, NotesUpdateRequest $request) {
-        $this->authorize('update', $note);
+    public function update(NotesUpdateRequest $request) {
+        //$this->authorize('update', $note);
 
         $input = $request->validated();
 
-        $note->fill($input);
-        $note->save();
+        Notes::where('id', $input['id'])->update(
+            [
+                'title' => $input['title'],
+                'text' => $input['text'],
+            ]);
 
-        return new NotesResource($note->fresh());
+        return redirect()->intended('notes');
+        //return new NotesResource($note->fresh());
+    }
+
+    public function updateview(Notes $note) {
+        $notes = NotesResource::collection(Auth::user()->notes->where('id', $note->id));
+
+        return view('notesupdate', ['notes' => $notes]);
     }
 
     public function delete(Notes $note) {

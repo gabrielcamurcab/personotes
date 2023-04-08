@@ -25,7 +25,7 @@
                     <div class="card-title">{{ $note->title }}</div>
                     <div class="card-text">{{ $note->text }}</div>
                     <div class="card-buttons">
-                    <a class="card-button">Editar</a>
+                    <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
                     <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
                     </div>
                 </div>

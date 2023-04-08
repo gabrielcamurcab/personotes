@@ -35,6 +35,10 @@ Route::get('/notes/create', function() {
     return view('notescreate');
 })->name('notes.index.create')->middleware('auth');
 
+Route::get('notes/update/{note}', [NotesController::class, 'updateview'])->name('notes.index.update')->middleware('auth');
+
+
+
 Route::group(['prefix' => 'auth'], function() {
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
@@ -44,6 +48,6 @@ Route::group(['prefix' => 'auth'], function() {
 Route::get('notes', [NotesController::class, 'index'])->name('notes.index')->middleware('auth');
 Route::post('notes', [NotesController::class, 'create'])->name('notes.create')->middleware('auth');
 Route::get('notes/delete/{note}', [NotesController::class, 'delete'])->name('notes.delete')->middleware('auth');
-Route::post('notes/update/{note}', [NotesController::class, 'update'])->name('notes.update')->middleware('auth');
+Route::post('notes/update', [NotesController::class, 'update'])->name('notes.update')->middleware('auth');
 
 
