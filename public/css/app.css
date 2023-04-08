@@ -112,7 +112,7 @@ input[type="submit"]:hover {
 }
 
 .card-buttons {
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
 }
 

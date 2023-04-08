@@ -13,7 +13,7 @@
             <div class="card-title-principal">Personotes v1.0</div>
         </div>
         <div class="card-50">
-            <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> </div>
+            <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> | <a href="user/update" class="card-button">Editar</a></div>
         </div>
         @if(count($notes) > 0)
             <div class="card-100">

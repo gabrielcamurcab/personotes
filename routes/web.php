@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', [NotesController::class, 'index'])->name('index')->middleware('auth');
 
 Route::get('/login', function() {
     return view('login');
@@ -36,8 +35,8 @@ Route::get('/notes/create', function() {
 })->name('notes.index.create')->middleware('auth');
 
 Route::get('notes/update/{note}', [NotesController::class, 'updateview'])->name('notes.index.update')->middleware('auth');
-
-
+Route::get('user/update', [UserController::class, 'updateuser'])->name('user.index.update')->middleware('auth');
+Route::post('user/update', [UserController::class, 'update'])->name('user.update');
 
 Route::group(['prefix' => 'auth'], function() {
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
