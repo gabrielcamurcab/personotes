@@ -24,7 +24,7 @@
             @csrf
             <input type="hidden" name="id" value="{{ $note->id }}">
             <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
-            <textarea style="resize: vertical;" name="text" placeholder="Texto">{{ $note->text }}</textarea>
+            <textarea style="resize: none" rows="7" name="text" placeholder="Texto">{{ $note->text }}</textarea>
             <input type="submit" value="Atualizar">
             <a href="/notes">< Voltar</a>
         </form>
