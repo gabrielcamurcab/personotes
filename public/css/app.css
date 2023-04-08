@@ -26,7 +26,6 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
-    position: absolute;
 }
 
 input[type="submit"] {
@@ -44,19 +43,19 @@ input[type="submit"]:hover {
 }
 
 .login {
-    width: 300px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0px 0px 20px #ccc;
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 20px #ccc;
 }
 
 .note {
-    width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0px 0px 20px #ccc;
+  width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 20px #ccc;
 }
 
 .card-container {
@@ -113,7 +112,7 @@ input[type="submit"]:hover {
 }
 
 .card-buttons {
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
 }
 

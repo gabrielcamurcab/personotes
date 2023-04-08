@@ -17,14 +17,18 @@
         </div>
     </div>
     <div class="container">
-        <h2>Criar anotação</h2>
-        <form class="note" method="POST" action="{{ route('notes.create') }}">
+        <h2>Editar anotação</h2>
+    {{-- {{ dd($notes) }} --}}
+    @foreach ($notes as $note)
+        <form class="note" method="POST" action="{{ route('notes.update') }}">
             @csrf
-            <input type="text" name="title" placeholder="Titulo">
-            <textarea style="resize: vertical;" name="text" placeholder="Texto"></textarea>
-            <input type="submit" value="Criar">
+            <input type="hidden" name="id" value="{{ $note->id }}">
+            <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
+            <textarea style="resize: vertical;" name="text" placeholder="Texto">{{ $note->text }}</textarea>
+            <input type="submit" value="Atualizar">
             <a href="/notes">< Voltar</a>
         </form>
+    @endforeach
     </div>
 </body>
 </html>

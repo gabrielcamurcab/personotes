@@ -5,13 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    @foreach ($notes as $note)
-        <div class="container">
-            <h1>{{ $note->title }}</h1>
-            <p>{{ $note->text }}</p>
+    <div class="card-container">
+        <div class="card-50">
+            <div class="card-title-principal">Personotes v1.0</div>
         </div>
-    @endforeach
+        <div class="card-50">
+            <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> | <a href="user/update" class="card-button">Editar</a></div>
+        </div>
+        @if(count($notes) > 0)
+            <div class="card-100">
+                <div class="card-title">Deseja criar uma nova anotação?</div><br>
+                <a href="notes/create" class="card-button">Criar anotação</a>
+            </div>
+            @foreach ($notes as $note)
+                <div class="card">
+                    <div class="card-title">{{ $note->title }}</div>
+                    <div class="card-text">{{ $note->text }}</div>
+                    <div class="card-buttons">
+                    <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
+                    <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="card-100">
+                <div class="card-title">Você ainda não tem anotações</div><br>
+                <a href="notes/create" class="card-button">Criar anotação</a>
+            </div>
+        @endif
+    </div>
 </body>
 </html>

@@ -24,7 +24,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|string|min:8|max:30|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/',
+            'password' => 'nullable|string|min:8|max:30|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/',
         ];
     }
 }
