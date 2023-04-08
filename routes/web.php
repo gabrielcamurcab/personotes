@@ -38,6 +38,7 @@ Route::get('/notes/create', function() {
 Route::group(['prefix' => 'auth'], function() {
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+    Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
 Route::get('notes', [NotesController::class, 'index'])->name('notes.index')->middleware('auth');

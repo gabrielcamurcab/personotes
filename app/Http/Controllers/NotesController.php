@@ -19,7 +19,7 @@ class NotesController extends Controller
 
         $note = Auth::user()->notes()->create($input);
 
-        return view('notes');
+        return redirect()->intended('notes');
     }
 
     public function index() {
