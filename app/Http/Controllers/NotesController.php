@@ -9,12 +9,25 @@ use App\Models\Notes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class NotesController extends Controller
 {
 
     public $notes;
     public function create(NotesCreateRequest $request) {
+        $validator = Validator::make($request->all(), [
+            'title' => ['required', 'string'],
+            'text' => ['required', 'string'],
+        ],
+        $messages = [
+            'title.required' => 'Você precisa preencher o :attribute.',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $input = $request->validated();
 
         $note = Auth::user()->notes()->create($input);
