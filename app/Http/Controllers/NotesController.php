@@ -46,8 +46,10 @@ class NotesController extends Controller
     }
 
     public function delete(Notes $note) {
-        $this->authorize('delete', $note);
+        //$this->authorize('delete', $note);
 
         $note->delete();
+
+        return redirect()->intended('notes');
     }
 }

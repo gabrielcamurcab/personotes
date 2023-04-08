@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
+    <div class="card-container">
+        <div class="card-50">
+            <div class="card-title-principal">Personotes v1.0</div>
+        </div>
+        <div class="card-50">
+            <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> </div>
+        </div>
+    </div>
     <div class="container">
         <h2>Criar anotação</h2>
         <form class="note" method="POST" action="{{ route('notes.create') }}">
@@ -15,6 +23,7 @@
             <input type="text" name="title" placeholder="Titulo">
             <textarea style="resize: vertical;" name="text" placeholder="Texto"></textarea>
             <input type="submit" value="Criar">
+            <a href="/notes">< Voltar</a>
         </form>
     </div>
 </body>

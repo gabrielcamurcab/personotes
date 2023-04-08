@@ -21,6 +21,7 @@
             <input type="email" name="email" placeholder="E-mail">
             <input type="password" name="password" placeholder="Senha">
             <input type="submit" value="Cadastrar">
+            <a href="login">Fazer login</a>
         </form>
     </div>
 </body>

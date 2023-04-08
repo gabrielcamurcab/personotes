@@ -20,6 +20,7 @@
             <input type="email" name="email" placeholder="E-mail">
             <input type="password" name="password" placeholder="Senha">
             <input type="submit" value="Login">
+            <a href="cadastro">Cadastrar-se</a>
         </form>
     </div>
 </body>
