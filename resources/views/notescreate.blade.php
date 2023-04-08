@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    <form method="POST" action="{{ route('notes.create') }}">
-        @csrf
-        <input type="text" name="title" placeholder="Titulo">
-        <input type="text" name="text" placeholder="Texto">
-        <input type="submit" value="Criar">
-    </form>
+    <div class="container">
+        <h2>Criar anotação</h2>
+        <form class="note" method="POST" action="{{ route('notes.create') }}">
+            @csrf
+            <input type="text" name="title" placeholder="Titulo">
+            <textarea style="resize: vertical;" name="text" placeholder="Texto"></textarea>
+            <input type="submit" value="Criar">
+        </form>
+    </div>
 </body>
 </html>
