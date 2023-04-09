@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #6495ED;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+  
+  nav a.cta {
+    background-color: #fff;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  nav a.cta:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  .hero {
+    background-color: #4169E1;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero h1 {
+    font-size: 60px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .hero p {
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+  }
+  
+  .hero a.cta {
+    background-color: #fff;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 40px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+  }
+  
+  .hero a.cta:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  .features {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+  
+  .features h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  .features ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .features li {
+    flex-basis: calc(33.33% - 40px);
+    text-align: left;
+  }
+  
+  .features li img {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .features li h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .features li p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  .testimonials {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  .testimonials ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }  
