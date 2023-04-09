@@ -102,11 +102,14 @@
   
   .features li {
     flex-basis: calc(33.33% - 40px);
-    text-align: left;
+    text-align: center;
+    border: 2px solid #4169E1;
+    border-radius: 10px;
+    padding: 10px;
   }
   
   .features li img {
-    max-width: 200px;
+    height: 200px;
     margin-bottom: 20px;
   }
   
@@ -137,4 +140,8 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-  }  
+  }
+
+  footer {
+    text-align: center;
+  }

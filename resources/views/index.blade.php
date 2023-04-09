@@ -34,12 +34,12 @@
                 <li>
                     <img src="img/feature-2.png" alt="Recursos incríveis">
                     <h3>Acesso em qualquer lugar</h3>
-                    <p>Acesse suas anotações de qualquer dispositivo e em qualquer lugar.</p>
+                    <p>Acesse suas anotações de qualquer dispositivo conectado à Internet.</p>
                 </li>
                 <li>
                     <img src="img/feature-3.png" alt="Recursos incríveis">
-                    <h3>Sincronização automática</h3>
-                    <p>Mantenha suas anotações sincronizadas em tempo real em todos os seus dispositivos.</p>
+                    <h3>Guarde suas ideias!</h3>
+                    <p>Mantenha suas ideias guardadas em uma plataforma segura e versátil.</p>
                 </li>
             </ul>
         </section>
