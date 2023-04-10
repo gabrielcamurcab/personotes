@@ -39,7 +39,7 @@ Route::group(['prefix' => 'notes'], function() {
     Route::get('create', function() {return view('notescreate');})->name('notes.index.create')->middleware('auth');
     Route::get('delete/{note}', [NotesController::class, 'delete'])->name('notes.delete')->middleware('auth');
     Route::get('update/{note}', [NotesController::class, 'updateview'])->name('notes.index.update')->middleware('auth');
-    Route::post('update', [NotesController::class, 'update'])->name('notes.update')->middleware('auth');
+    Route::post('update/{note}', [NotesController::class, 'update'])->name('notes.update')->middleware('auth');
 });
 
 
