@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class NotesController extends Controller
 {
@@ -29,6 +30,8 @@ class NotesController extends Controller
         }
 
         $input = $request->validated();
+
+        $input['text'] = Markdown::convert($input['text'])->getContent();
 
         $note = Auth::user()->notes()->create($input);
 
