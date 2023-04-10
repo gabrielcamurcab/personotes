@@ -61,6 +61,7 @@ input[type="submit"]:hover {
 .card-container {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     /* justify-content: space-between; */
 }
 
@@ -71,6 +72,7 @@ input[type="submit"]:hover {
   margin: 10px;
   padding: 20px;
   width: 28.9%;
+  height: auto;
 }
 
 .card-100 {
@@ -109,6 +111,17 @@ input[type="submit"]:hover {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 20px;
+}
+
+.card-text {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 .card-buttons {
