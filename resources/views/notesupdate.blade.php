@@ -21,7 +21,7 @@
         <h2>Editar anotação</h2>
     {{-- {{ dd($notes) }} --}}
     @foreach ($notes as $note)
-        <form class="note" method="POST" action="/notes/update/{{ $note->id }}">
+        <form class="note" method="POST" action="{{ route('notes.update') }}">
             @csrf
             <input type="hidden" name="id" value="{{ $note->id }}">
             <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
