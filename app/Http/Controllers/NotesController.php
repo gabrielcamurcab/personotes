@@ -47,8 +47,8 @@ class NotesController extends Controller
         return new NotesResource($note);
     }
 
-    public function update(NotesUpdateRequest $request) {
-        //$this->authorize('update', $note);
+    public function update(Notes $note, NotesUpdateRequest $request) {
+        $this->authorize('update', $note);
 
         $input = $request->validated();
 
@@ -69,7 +69,7 @@ class NotesController extends Controller
     }
 
     public function delete(Notes $note) {
-        //$this->authorize('delete', $note);
+        $this->authorize('delete', $note);
 
         $note->delete();
 
