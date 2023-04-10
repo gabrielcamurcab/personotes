@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 </head>
 <body>
     <div class="card-container">
@@ -24,11 +25,18 @@
             @csrf
             <input type="hidden" name="id" value="{{ $note->id }}">
             <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
-            <textarea style="resize: none" rows="7" name="text" placeholder="Texto">{{ $note->text }}</textarea>
+            <textarea id="markdown-editor" style="resize: none" rows="7" name="text" placeholder="Texto">{{ $note->text }}</textarea>
             <input type="submit" value="Atualizar">
             <a href="/notes">< Voltar</a>
         </form>
     @endforeach
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+    <script>
+        const easyMDE = new EasyMDE({
+            showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'heading-bigger', 'heading-smaller', 'heading-1', 'heading-2', 'heading-3', 'clean-block', 'horizontal-rule'],
+            element: document.getElementById('markdown-editor')});
+    </script>
 </html>
