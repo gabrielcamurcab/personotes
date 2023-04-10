@@ -11,12 +11,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use League\HTMLToMarkdown\HtmlConverter;
+$converter = new HtmlConverter();
 
 class NotesController extends Controller
 {
-
     public $notes;
     public function create(NotesCreateRequest $request) {
+    
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'string'],
             'text' => ['required', 'string'],
@@ -55,6 +57,8 @@ class NotesController extends Controller
 
         $input = $request->validated();
 
+        $input['text'] = Markdown::convert($input['text'])->getContent();
+
         Notes::where('id', $input['id'])->update(
             [
                 'title' => $input['title'],
@@ -66,7 +70,12 @@ class NotesController extends Controller
     }
 
     public function updateview(Notes $note) {
-        $notes = NotesResource::collection(Auth::user()->notes->where('id', $note->id));
+        $converter = new HtmlConverter();
+        
+        //$notes = Auth::user()->notes->where('id', $note->id);
+        $notes = Notes::where([['user_id', '=', Auth::id()], ['id', '=', $note->id]])->get();
+
+        $notes[0]->text = $converter->convert($notes[0]->text);
 
         return view('notesupdate', ['notes' => $notes]);
     }
