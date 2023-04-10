@@ -172,3 +172,51 @@ input[type="submit"]:hover {
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
+
+/* Define a cor de fundo para a tabela */
+table {
+  background-color: #f7faff;
+}
+
+/* Define a cor de fundo para as células do cabeçalho */
+th {
+  background-color: #3888d8;
+  color: #fff;
+}
+
+/* Define a cor de fundo para as células das linhas ímpares */
+/* tr:nth-child(odd) td {
+  background-color: #cfe6f7;
+} */
+
+/* Define a cor de fundo para as células das linhas pares */
+/* tr:nth-child(even) td {
+  background-color: #a8d4f1;
+} */
+
+/* Define a cor da borda para todas as células */
+td, th {
+  border: 1px solid #4169E1;
+  color: #4169E1;
+}
+
+th {
+  color: #fff;
+}
+
+td {
+  padding-right: 20px;
+  padding-left: 5px;
+  color: #4169E1;
+}
+
+/* Define a cor de fundo para a célula selecionada */
+td.selected {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+img {
+  position: relative;
+  max-width: 250px;
+}
