@@ -48,7 +48,7 @@ class NotesController extends Controller
     }
 
     public function update(NotesUpdateRequest $request) {
-        //$this->authorize('update', $note);
+        //$this->authorize('update', $request['id']);
 
         $input = $request->validated();
 
