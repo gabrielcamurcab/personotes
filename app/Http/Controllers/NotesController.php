@@ -48,7 +48,7 @@ class NotesController extends Controller
     }
 
     public function update(NotesUpdateRequest $request) {
-        //$this->authorize('update', $request['id']);
+        $this->authorize('update', $request);
 
         $input = $request->validated();
 
@@ -69,7 +69,7 @@ class NotesController extends Controller
     }
 
     public function delete(Notes $note) {
-        //$this->authorize('delete', $note);
+        $this->authorize('delete', $note);
 
         $note->delete();
 
