@@ -33,7 +33,7 @@ class NotesController extends Controller
 
         $input = $request->validated();
 
-        $input['text'] = Markdown::convert($input['text'])->getContent();
+        //$input['text'] = Markdown::convert($input['text'])->getContent();
 
         $note = Auth::user()->notes()->create($input);
 
@@ -42,6 +42,11 @@ class NotesController extends Controller
 
     public function index() {
         $notes = NotesResource::collection(Auth::user()->notes);
+
+
+        for($i=0;$i<count($notes);$i++){
+            $notes[$i]['text'] = Markdown::convert($notes[$i]['text'])->getContent();
+        }
 
         return view('notes', ['notes' => $notes]);
     }
@@ -57,7 +62,7 @@ class NotesController extends Controller
 
         $input = $request->validated();
 
-        $input['text'] = Markdown::convert($input['text'])->getContent();
+        //$input['text'] = Markdown::convert($input['text'])->getContent();
 
         Notes::where('id', $input['id'])->update(
             [
@@ -75,7 +80,7 @@ class NotesController extends Controller
         //$notes = Auth::user()->notes->where('id', $note->id);
         $notes = Notes::where([['user_id', '=', Auth::id()], ['id', '=', $note->id]])->get();
 
-        $notes[0]->text = $converter->convert($notes[0]->text);
+        //$notes[0]->text = $converter->convert($notes[0]->text);
 
         return view('notesupdate', ['notes' => $notes]);
     }
