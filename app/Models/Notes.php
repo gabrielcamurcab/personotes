@@ -13,5 +13,7 @@ class Notes extends Model
         'user_id',
         'title',
         'text',
+        'color',
+        'background_color',
     ];
 }

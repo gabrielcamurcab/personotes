@@ -25,6 +25,8 @@ class NotesUpdateRequest extends FormRequest
             'id' => 'required|numeric',
             'title' => 'required|string',
             'text' => 'required|string',
+            'color' => 'required|string',
+            'background_color' => 'required|string',
         ];
     }
 }

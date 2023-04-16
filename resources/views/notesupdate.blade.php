@@ -26,6 +26,7 @@
             <input type="hidden" name="id" value="{{ $note->id }}">
             <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
             <textarea id="markdown-editor" style="resize: none" rows="7" name="text" placeholder="Texto">{{ $note->text }}</textarea>
+            Cor do texto: <input type="color" name="color" value="{{ $note->color }}"> Cor do fundo: <input type="color" name="background_color" value="{{ $note->background_color }}"><br><br>
             <input type="submit" value="Atualizar">
             <a href="/notes">< Voltar</a>
         </form>
