@@ -24,6 +24,9 @@ class NotesCreateRequest extends FormRequest
         return [
             'title' => 'required|string',
             'text' => 'required|string',
+            'color' => 'required|string',
+            'background_color' => 'required|string',
+
         ];
     }
 }

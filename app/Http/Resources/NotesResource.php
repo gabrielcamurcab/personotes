@@ -18,6 +18,8 @@ class NotesResource extends JsonResource
             'id' => (integer)$this->id,
             'title' => (string)$this->title,
             'text' => (string)$this->text,
+            'color' => (string)$this->color,
+            'background_color' => (string)$this->background_color,
             'created_at' =>(string)$this->created_at,
         ];
     }

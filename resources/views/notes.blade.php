@@ -24,11 +24,11 @@
                     <a href="notes/create" class="card-button">Criar anotação</a>
                 </div>
                 @foreach ($notes as $note)
-                    <div class="card">
+                    <div class="card" style="color: {{ $note->color }}; background-color: {{ $note->background_color }}">
                         <div class="card-title">{{ $note->title }}</div>
                         <div class="card-text">{!! $note->text !!}</div><br><br>
                         <div class="card-buttons">
-                        <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
+                        <a href="notes/update/{{ $note->id }}" class="card-button" >Editar</a>
                         <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
                         </div>
                     </div>

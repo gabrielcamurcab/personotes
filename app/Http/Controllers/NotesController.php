@@ -68,6 +68,8 @@ class NotesController extends Controller
             [
                 'title' => $input['title'],
                 'text' => $input['text'],
+                'color' => $input['color'],
+                'background_color' => $input['background_color'],
             ]);
 
         return redirect()->intended('notes');
