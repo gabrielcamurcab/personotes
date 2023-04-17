@@ -28,8 +28,8 @@
                         <div class="card-title">{{ $note->title }}</div>
                         <div class="card-text">{!! $note->text !!}</div><br><br>
                         <div class="card-buttons">
-                        <a href="notes/update/{{ $note->id }}" class="card-button" >Editar</a>
-                        <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
+                        <a href="notes/update/{{ $note->id }}" style="color: {{ $note->background_color }}; background-color: {{ $note->color }}" class="card-button" >Editar</a>
+                        <a href="notes/delete/{{ $note->id }}" style="color: {{ $note->background_color }}; background-color: {{ $note->color }}" class="card-button">Excluir</a>
                         </div>
                     </div>
                 @endforeach
