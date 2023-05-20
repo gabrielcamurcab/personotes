@@ -118,7 +118,7 @@ class NotesController extends Controller
 
     public function unfavorite(Notes $note)
     {
-        $note->update(['favorite' => 0]);
+        Notes::where('id', $note->id)->update(['favorite' => 0]);
 
         return redirect()->intended('notes');
 
