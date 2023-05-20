@@ -41,8 +41,11 @@ class NotesController extends Controller
     }
 
     public function index() {
-        $notes = NotesResource::collection(Auth::user()->notes);
+        //$notes = NotesResource::collection(Auth::user()->notes);
 
+        $notes = Notes::where('user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->get();
+
+        //dd($notes);
 
         for($i=0;$i<count($notes);$i++){
             $notes[$i]['text'] = Markdown::convert($notes[$i]['text'])->getContent();
