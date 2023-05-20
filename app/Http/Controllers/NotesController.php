@@ -109,13 +109,18 @@ class NotesController extends Controller
         return redirect()->intended('notes');
     }
 
-    public function addFavorite(Notes $note)
+    public function favorite(Notes $note)
     {
-        $note->update(['favorite' => 1]);
+        Notes::where('id', $note->id)->update(['favorite' => 1]);
+
+        return redirect()->intended('notes');
     }
 
-    public function removeFavorite(Notes $note)
+    public function unfavorite(Notes $note)
     {
         $note->update(['favorite' => 0]);
+
+        return redirect()->intended('notes');
+
     }
 }
