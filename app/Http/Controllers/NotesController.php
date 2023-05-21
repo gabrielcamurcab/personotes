@@ -111,6 +111,8 @@ class NotesController extends Controller
 
     public function favorite(Notes $note)
     {
+        $this->authorize('favorite', $note);
+
         Notes::where('id', $note->id)->update(['favorite' => 1]);
 
         return redirect()->intended('notes');
@@ -118,6 +120,8 @@ class NotesController extends Controller
 
     public function unfavorite(Notes $note)
     {
+        $this->authorize('unfavorite', $note);
+
         Notes::where('id', $note->id)->update(['favorite' => 0]);
 
         return redirect()->intended('notes');
