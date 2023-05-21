@@ -17,7 +17,8 @@
         </div>
         <div class="card-50">
             <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> |
-                <a href="user/update" class="card-button">Editar</a></div>
+                <a href="user/update" class="card-button">Editar</a>
+            </div>
         </div>
     </div>
     <div class="card-container">
@@ -30,9 +31,13 @@
                 <div class="card" style="color: {{ $note->color }}; background-color: {{ $note->background_color }}">
                     <div class="card-title">{{ $note->title }}
                         @if ($note->favorite === 1)
-                            <i class="fa-solid fa-star"></i>
+                            <a style="color: {{ $note->color }};" href="notes/unfavorite/{{ $note->id }}">
+                                <i class="fa-solid fa-star"></i>
+                            </a>
                         @else
-                            <i class="fa-regular fa-star"></i>
+                            <a style="color: {{ $note->color }};" href="notes/favorite/{{ $note->id }}">
+                                <i class="fa-regular fa-star"></i>
+                            </a>
                         @endif
                     </div>
                     <div class="card-text">{!! $note->text !!}</div><br><br>
