@@ -32,4 +32,12 @@ class NotesPolicy
     public function delete(User $user, Notes $notes) {
         return $user->id === $notes->user_id;
     }
+
+    public function favorite(User $user, Notes $notes) {
+        return $user->id === $notes->user_id;
+    }
+
+    public function unfavorite(User $user, Notes $notes) {
+        return $user->id === $notes->user_id;
+    }
 }
