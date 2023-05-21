@@ -12,21 +12,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use League\HTMLToMarkdown\HtmlConverter;
+
 $converter = new HtmlConverter();
 
 class NotesController extends Controller
 {
     public $notes;
-    public function create(NotesCreateRequest $request) {
-    
-        $validator = Validator::make($request->all(), [
-            'title' => ['required', 'string'],
-            'text' => ['required', 'string'],
-        ],
-        $messages = [
-            'title.required' => 'Você precisa preencher o :attribute.',
-        ]);
-    
+    public function create(NotesCreateRequest $request)
+    {
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => ['required', 'string'],
+                'text' => ['required', 'string'],
+            ],
+            $messages = [
+                'title.required' => 'Você precisa preencher o :attribute.',
+            ]
+        );
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -40,24 +45,30 @@ class NotesController extends Controller
         return redirect()->intended('notes');
     }
 
-    public function index() {
-        $notes = NotesResource::collection(Auth::user()->notes);
+    public function index()
+    {
+        //$notes = NotesResource::collection(Auth::user()->notes);
 
+        $notes = Notes::where('user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->get();
 
-        for($i=0;$i<count($notes);$i++){
+        //dd($notes);
+
+        for ($i = 0; $i < count($notes); $i++) {
             $notes[$i]['text'] = Markdown::convert($notes[$i]['text'])->getContent();
         }
 
         return view('notes', ['notes' => $notes]);
     }
 
-    public function show(Notes $note) {
+    public function show(Notes $note)
+    {
         $this->authorize('show', $note);
 
         return new NotesResource($note);
     }
 
-    public function update(NotesUpdateRequest $request) {
+    public function update(NotesUpdateRequest $request)
+    {
         //$this->authorize('update', $note);
 
         $input = $request->validated();
@@ -70,15 +81,17 @@ class NotesController extends Controller
                 'text' => $input['text'],
                 'color' => $input['color'],
                 'background_color' => $input['background_color'],
-            ]);
+            ]
+        );
 
         return redirect()->intended('notes');
         //return new NotesResource($note->fresh());
     }
 
-    public function updateview(Notes $note) {
+    public function updateview(Notes $note)
+    {
         $converter = new HtmlConverter();
-        
+
         //$notes = Auth::user()->notes->where('id', $note->id);
         $notes = Notes::where([['user_id', '=', Auth::id()], ['id', '=', $note->id]])->get();
 
@@ -87,11 +100,31 @@ class NotesController extends Controller
         return view('notesupdate', ['notes' => $notes]);
     }
 
-    public function delete(Notes $note) {
+    public function delete(Notes $note)
+    {
         $this->authorize('delete', $note);
 
         $note->delete();
 
         return redirect()->intended('notes');
+    }
+
+    public function favorite(Notes $note)
+    {
+        $this->authorize('favorite', $note);
+
+        Notes::where('id', $note->id)->update(['favorite' => 1]);
+
+        return redirect()->intended('notes');
+    }
+
+    public function unfavorite(Notes $note)
+    {
+        $this->authorize('unfavorite', $note);
+
+        Notes::where('id', $note->id)->update(['favorite' => 0]);
+
+        return redirect()->intended('notes');
+
     }
 }

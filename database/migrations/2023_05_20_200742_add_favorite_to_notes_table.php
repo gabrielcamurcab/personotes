@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->string('color')->default('#000');
-            $table->string('background_color')->default('#fff');
+            $table->integer('favorite')->default(0);
         });
     }
 
@@ -23,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->dropColumn(['color', 'backgrond-color']);
+            $table->dropColumn('favorite');
         });
     }
 };

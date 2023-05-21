@@ -21,6 +21,7 @@ class NotesResource extends JsonResource
             'color' => (string)$this->color,
             'background_color' => (string)$this->background_color,
             'created_at' =>(string)$this->created_at,
+            'favorite' =>(integer)$this->favorite,
         ];
     }
 }

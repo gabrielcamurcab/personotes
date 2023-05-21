@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  web:
+    image: php:7.4-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=personotes
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=personotes
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
