@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+
     <div class="card-container">
         @if (count($notes) > 0)
             <div class="card-100">
