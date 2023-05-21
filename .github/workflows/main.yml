@@ -1,2 +1,0 @@
-- name: Laravel Deploy
-  uses: ngocquyhoang/laravel-deploy@laravel-custom-port
