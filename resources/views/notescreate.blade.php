@@ -29,6 +29,13 @@
             @enderror
             <input type="text" name="title" placeholder="Titulo">
             <textarea id="markdown-editor" style="resize: none" rows="7" name="text" placeholder="Texto"></textarea>
+            Categoria:<br>
+            <select name="categorie_id">
+                <option value="">Sem categoria</option>
+                @foreach ($categories as $categorie)
+                    <option value={{ $categorie->id }}>{{ $categorie->name }}</option>
+                @endforeach
+            </select><br>
             Cor do texto: <input type="color" name="color" value="#ffffff"> Cor do fundo: <input type="color" name="background_color" value="#000000"><br><br>
             <input type="submit" value="Criar">
             <a href="/notes">< Voltar</a>

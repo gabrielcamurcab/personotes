@@ -15,5 +15,6 @@ class Notes extends Model
         'text',
         'color',
         'background_color',
+        'categorie_id',
     ];
 }

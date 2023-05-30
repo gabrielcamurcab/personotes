@@ -26,7 +26,7 @@ class NotesCreateRequest extends FormRequest
             'text' => 'required|string',
             'color' => 'required|string',
             'background_color' => 'required|string',
-
+            'categorie_id' => 'numeric',
         ];
     }
 }

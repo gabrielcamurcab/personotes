@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->foreignId('categorie_id')->nullable();
+            $table->unsignedBigInteger('categorie_id')->nullable();
+            $table->foreign('categorie_id')->references('id')->on('categories');
         });
     }
 
