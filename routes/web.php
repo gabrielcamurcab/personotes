@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,10 @@ Route::group(['prefix' => 'notes'], function() {
     Route::post('update', [NotesController::class, 'update'])->name('notes.update')->middleware('auth');
     Route::get('favorite/{note}', [NotesController::class, 'favorite'])->name('notes.favorite')->middleware('auth');
     Route::get('unfavorite/{note}', [NotesController::class, 'unfavorite'])->name('notes.unfavorite')->middleware('auth');
+});
 
+Route::group(['prefix' => 'categories'], function() {
+    Route::post('create', [CategoriesController::class, 'create'])->name('categories.create')->middleware('auth');
 });
 
 
