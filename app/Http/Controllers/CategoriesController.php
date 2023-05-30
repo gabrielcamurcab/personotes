@@ -26,4 +26,8 @@ class CategoriesController extends Controller
 
         $categorie = Auth::user()->categories()->create($input);
     }
+
+    public function index() {
+        return view ('categoriescreate');
+    }
 }

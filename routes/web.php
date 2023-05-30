@@ -46,7 +46,8 @@ Route::group(['prefix' => 'notes'], function() {
 });
 
 Route::group(['prefix' => 'categories'], function() {
-    Route::post('create', [CategoriesController::class, 'create'])->name('categories.create')->middleware('auth');
+    Route::get('', [CategoriesController::class, 'index'])->name('categories.index')->middleware('auth');
+    Route::post('', [CategoriesController::class, 'create'])->name('categories.create')->middleware('auth');
 });
 
 
