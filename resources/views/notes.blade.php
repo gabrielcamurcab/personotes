@@ -26,6 +26,7 @@
             <div class="card-100">
                 <div class="card-title">Deseja criar uma nova anotação?</div><br>
                 <a href="notes/create" class="card-button">Criar anotação</a>
+                <a href="categories" class="card-button">Criar categoria</a>
             </div>
             @foreach ($notes as $note)
                 <div class="card" style="color: {{ $note->color }}; background-color: {{ $note->background_color }}">
