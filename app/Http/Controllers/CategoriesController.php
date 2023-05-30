@@ -9,25 +9,36 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
 {
+public $categories;
+
     public function create(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|string',
-                'user_id' => 'required|numeric'
+                'name' => 'required|string'
             ],
             $messages = [
                 'name.required' => 'Você precisa preeencher o nome da categoria.'
             ]
         );
 
-        $input = $request->validated();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        $categorie = Auth::user()->categories()->create($input);
+        $input = $request;
+
+        $categorie = Auth::user()->categories()->create([
+            'name' => $input->name,
+        ]);
+
+        return redirect()->intended('notes');
     }
 
     public function index() {
-        return view ('categoriescreate');
+        $categories = Categories::where('user_id', Auth::user()->id);
+
+        return view ('categoriescreate', ['categories' => $categories]);
     }
 }

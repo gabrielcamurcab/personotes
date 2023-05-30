@@ -19,15 +19,12 @@
     </div>
     <div class="container">
         <h2>Criar categoria</h2>
+        @foreach($categories as $categorie)
+            {{ $categorie->name }}
+        @endforeach
         <form class="note" method="POST" action="{{ route('categories.create') }}">
             @csrf
-            @error('title')
-                <div class="alert-danger">{{ $message }}</div>
-            @enderror
-            @error('text')
-                <div class="alert-danger">{{ $message }}</div>
-            @enderror
-            <input type="text" name="text" placeholder="Titulo">
+            <input type="text" name="name" placeholder="Nome da categoria">
             <input type="submit" value="Criar">
             <a href="/notes">< Voltar</a>
         </form>
