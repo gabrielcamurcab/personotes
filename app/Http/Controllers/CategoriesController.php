@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
@@ -23,6 +24,6 @@ class CategoriesController extends Controller
 
         $input = $request->validated();
 
-        $categorie = Categories::insert($input);
+        $categorie = Auth::user()->categories()->create($input);
     }
 }

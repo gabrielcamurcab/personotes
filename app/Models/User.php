@@ -27,6 +27,10 @@ class User extends Authenticatable
         return $this->hasMany(Notes::class);
     }
 
+    public function categories() {
+        return $this->hasMany(Categories::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
