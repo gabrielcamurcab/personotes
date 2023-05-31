@@ -26,6 +26,14 @@
             <input type="hidden" name="id" value="{{ $note->id }}">
             <input type="text" name="title" placeholder="Titulo" value="{{ $note->title }}">
             <textarea id="markdown-editor" style="resize: none" rows="7" name="text" placeholder="Texto">{{ $note->text }}</textarea>
+            Categoria:<br>
+            <select name="categorie_id">
+                <option value="{{ $note->categorie_id }}">{{ $note->categorieName }} (Categoria atual)</option>
+                <option value="">Sem categoria</option>
+                @foreach ($categories as $categorie)
+                    <option value={{ $categorie->id }}>{{ $categorie->name }}</option>
+                @endforeach
+            </select><br>
             Cor do texto: <input type="color" name="color" value="{{ $note->color }}"> Cor do fundo: <input type="color" name="background_color" value="{{ $note->background_color }}"><br><br>
             <input type="submit" value="Atualizar">
             <a href="/notes">< Voltar</a>
