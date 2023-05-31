@@ -26,6 +26,7 @@
             <div class="card-100">
                 <div class="card-title">Deseja criar uma nova anotação?</div><br>
                 <a href="notes/create" class="card-button">Criar anotação</a>
+                <a href="categories" class="card-button">Criar categoria</a>
             </div>
             @foreach ($notes as $note)
                 <div class="card" style="color: {{ $note->color }}; background-color: {{ $note->background_color }}">
@@ -40,7 +41,14 @@
                             </a>
                         @endif
                     </div>
-                    <div class="card-text">{!! $note->text !!}</div><br><br>
+                    <div class="card-text">{!! $note->text !!}</div>
+                    <strong>Categoria: </strong> 
+                    @if ($note->categorieName)
+                        {{ $note->categorieName }}
+                    @else
+                        Sem categoria
+                    @endif
+                    <br><br>
                     <div class="card-buttons">
                         <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
                         <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NotesCreateRequest;
 use App\Http\Requests\NotesUpdateRequest;
 use App\Http\Resources\NotesResource;
+use App\Models\Categories;
 use App\Models\Notes;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,6 +19,13 @@ $converter = new HtmlConverter();
 class NotesController extends Controller
 {
     public $notes;
+
+    public function createview()
+    {
+        $categories = Categories::where('user_id', Auth::user()->id)->get();
+
+        return view('notescreate', ['categories' => $categories]);
+    }
     public function create(NotesCreateRequest $request)
     {
 
@@ -40,6 +48,10 @@ class NotesController extends Controller
 
         //$input['text'] = Markdown::convert($input['text'])->getContent();
 
+        //$input['categorie_id'] = intval($input['categorie_id']);
+
+        //dd($input);
+
         $note = Auth::user()->notes()->create($input);
 
         return redirect()->intended('notes');
@@ -49,7 +61,7 @@ class NotesController extends Controller
     {
         //$notes = NotesResource::collection(Auth::user()->notes);
 
-        $notes = Notes::where('user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->get();
+        $notes = Notes::where('notes.user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->leftJoin('categories', 'notes.categorie_id', '=', 'categories.id')->select('notes.*', 'categories.name as categorieName')->get();
 
         //dd($notes);
 
@@ -81,6 +93,7 @@ class NotesController extends Controller
                 'text' => $input['text'],
                 'color' => $input['color'],
                 'background_color' => $input['background_color'],
+                'categorie_id' => $input['categorie_id'],
             ]
         );
 
@@ -93,11 +106,16 @@ class NotesController extends Controller
         $converter = new HtmlConverter();
 
         //$notes = Auth::user()->notes->where('id', $note->id);
-        $notes = Notes::where([['user_id', '=', Auth::id()], ['id', '=', $note->id]])->get();
+        $notes = Notes::where([['notes.user_id', '=', Auth::id()], ['notes.id', '=', $note->id]])->leftJoin('categories', 'notes.categorie_id', '=', 'categories.id')->select('notes.*', 'categories.name as categorieName')->get();
+
+        $categories = Categories::where('user_id', Auth::user()->id)->get();
 
         //$notes[0]->text = $converter->convert($notes[0]->text);
 
-        return view('notesupdate', ['notes' => $notes]);
+        return view('notesupdate', [
+            'notes' => $notes,
+            'categories' => $categories,
+        ]);
     }
 
     public function delete(Notes $note)
