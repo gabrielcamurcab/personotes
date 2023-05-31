@@ -60,14 +60,15 @@ class NotesController extends Controller
     {
         //$notes = NotesResource::collection(Auth::user()->notes);
 
-        $notes = Notes::where('user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->get();
+        $notes = Notes::where('notes.user_id', Auth::user()->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->leftJoin('categories', 'notes.categorie_id', '=', 'categories.id')->select('notes.*', 'categories.name as categorieName')->get();
 
+        //dd($notes);
 
         for ($i = 0; $i < count($notes); $i++) {
             $notes[$i]['text'] = Markdown::convert($notes[$i]['text'])->getContent();
         }
 
-        return view('notes', ['notes' => $notes,]);
+        return view('notes', ['notes' => $notes]);
     }
 
     public function show(Notes $note)

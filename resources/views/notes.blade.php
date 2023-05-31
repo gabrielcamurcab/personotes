@@ -41,7 +41,14 @@
                             </a>
                         @endif
                     </div>
-                    <div class="card-text">{!! $note->text !!}</div><br><br>
+                    <div class="card-text">{!! $note->text !!}</div>
+                    <strong>Categoria: </strong> 
+                    @if ($note->categorieName)
+                        {{ $note->categorieName }}
+                    @else
+                        Sem categoria
+                    @endif
+                    <br><br>
                     <div class="card-buttons">
                         <a href="notes/update/{{ $note->id }}" class="card-button">Editar</a>
                         <a href="notes/delete/{{ $note->id }}" class="card-button">Excluir</a>
