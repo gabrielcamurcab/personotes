@@ -26,5 +26,16 @@
             <a href="/notes">< Voltar</a>
         </form>
     </div>
+    <div class="container">
+        @foreach ($categories as $categorie)
+            <table>
+                <tr>
+                    <td>{{ $categorie->name }}</td>
+                    <td><a href="#">Editar</a></td>
+                    <td><a href="#">Excluir</a></td>
+                </tr>
+            </table>
+        @endforeach
+    </div>
 </body>
 </html>

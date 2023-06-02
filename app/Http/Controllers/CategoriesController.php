@@ -33,11 +33,13 @@ public $categories;
             'name' => $input->name,
         ]);
 
-        return redirect()->intended('notes');
+        return view ('categoriescreate', ['message' => 'Categoria criada com sucesso']);
     }
 
     public function index() {
-        $categories = Categories::where('user_id', Auth::user()->id);
+        $categories = Categories::where('user_id', Auth::user()->id)->get();
+
+        //dd($categories);
 
         return view ('categoriescreate', ['categories' => $categories]);
     }
