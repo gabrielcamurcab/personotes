@@ -33,7 +33,9 @@ public $categories;
             'name' => $input->name,
         ]);
 
-        return view ('categoriescreate', ['message' => 'Categoria criada com sucesso']);
+        $categories = Categories::where('user_id', Auth::user()->id)->get();
+
+        return view ('categoriescreate', ['categories' => $categories], ['message' => 'Categoria criada com sucesso']);
     }
 
     public function index() {

@@ -173,6 +173,16 @@ input[type="submit"]:hover {
   border-radius: 0.25rem;
 }
 
+.alert-success {
+  color: #0a2b00;
+  background-color: #9cff88;
+  border-color: #9cff88;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
 /* Define a cor de fundo para a tabela */
 table {
   background-color: #f7faff;

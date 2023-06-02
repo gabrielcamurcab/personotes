@@ -19,6 +19,9 @@
     </div>
     <div class="container">
         <h2>Criar categoria</h2>
+        @if(isset($message))
+            <div class="alert-success">{{ $message }}</div>
+        @endif
         <form class="note" method="POST" action="{{ route('categories.create') }}">
             @csrf
             <input type="text" name="name" placeholder="Nome da categoria">
