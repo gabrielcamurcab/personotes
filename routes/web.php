@@ -48,6 +48,9 @@ Route::group(['prefix' => 'notes'], function() {
 Route::group(['prefix' => 'categories'], function() {
     Route::get('', [CategoriesController::class, 'index'])->name('categories.index')->middleware('auth');
     Route::post('', [CategoriesController::class, 'create'])->name('categories.create')->middleware('auth');
+    Route::get('delete/{categorie}', [CategoriesController::class, 'delete'])->name('categories.delete')->middleware('auth');
+    Route::get('update/{categorie}', [CategoriesController::class, 'updateview'])->name('categories.index.update')->middleware('auth');
+    Route::post('update', [CategoriesController::class, 'update'])->name('categories.update')->middleware('auth');
 });
 
 
