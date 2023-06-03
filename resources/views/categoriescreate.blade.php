@@ -39,7 +39,7 @@
                 <table>
                     <tr>
                         <td width="460px">{{ $categorie->name }}</td>
-                        <td height="50px"><a href="" class="card-button">Editar</a></td>
+                        <td height="50px"><a href="categories/update/{{ $categorie->id }}"" class="card-button">Editar</a></td>
                         <td height="50px"><a href="categories/delete/{{ $categorie->id }}" class="card-button-red">Excluir</a></td>
                     </tr>
                 </table>
