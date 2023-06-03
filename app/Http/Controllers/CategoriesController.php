@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Notes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -44,5 +45,15 @@ public $categories;
         //dd($categories);
 
         return view ('categoriescreate', ['categories' => $categories]);
+    }
+
+    public function delete(Categories $categorie) {
+        $this->authorize('delete', $categorie);
+
+        Notes::where('categorie_id', $categorie->id)->update(['categorie_id' => null]);
+        
+        $categorie->delete();
+        
+        return redirect()->intended('categories');
     }
 }

@@ -34,8 +34,8 @@
             <table>
                 <tr>
                     <td>{{ $categorie->name }}</td>
-                    <td><a href="#">Editar</a></td>
-                    <td><a href="#">Excluir</a></td>
+                    <td><a href="">Editar</a></td>
+                    <td><a href="categories/delete/{{ $categorie->id }}">Excluir</a></td>
                 </tr>
             </table>
         @endforeach
