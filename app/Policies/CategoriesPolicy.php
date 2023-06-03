@@ -18,4 +18,8 @@ class CategoriesPolicy
     public function delete(User $user, Categories $categorie) {
         return $user->id === $categorie->user_id;
     }
+
+    public function update(User $user, Categories $categorie) {
+        return $user->id === $categorie->user_id;
+    }
 }
