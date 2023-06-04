@@ -72,6 +72,22 @@ class NotesController extends Controller
         return view('notes', ['notes' => $notes]);
     }
 
+    public function indexByCategorie(Categories $categorieid)
+    {
+        //$notes = NotesResource::collection(Auth::user()->notes);
+
+        $notes = Notes::where('notes.user_id', Auth::user()->id)->where('categorie_id', $categorieid->id)->orderBy('favorite', 'DESC')->orderBy('created_at', 'DESC')->leftJoin('categories', 'notes.categorie_id', '=', 'categories.id')->select('notes.*', 'categories.name as categorieName')->get();
+
+        //dd($categorieid);
+        //dd($notes);
+
+        for ($i = 0; $i < count($notes); $i++) {
+            $notes[$i]['text'] = Markdown::convert($notes[$i]['text'])->getContent();
+        }
+
+        return view('notes', ['notes' => $notes]);
+    }
+
     public function show(Notes $note)
     {
         $this->authorize('show', $note);
