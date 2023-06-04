@@ -22,6 +22,13 @@
         </div>
     </div>
     <div class="card-container">
+        <div class="card-100">
+            <div class="card-title">Categorias</div><br>
+                <a class="card-button-2" href="{{ route('notes.index') }}">Todas as notas</a>
+                @foreach($categories as $categorie)
+                    <a class="card-button-2" href="{{ route('notes.indexbycategorie', $categorie->id) }}">{{ $categorie->name }}</a>
+                @endforeach
+        </div>
         @if (count($notes) > 0)
             <div class="card-100">
                 <div class="card-title">Deseja criar uma nova anotação?</div><br>

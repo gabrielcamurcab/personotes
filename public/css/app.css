@@ -146,6 +146,33 @@ input[type="submit"]:hover {
   background-color: #1a488e;
 }
 
+.card-button-2 {
+  background-color: transparent;
+  border: solid 1px #3366cc;
+  border-radius: 5px;
+  color: #3366cc;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  width: 48%;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.card-button-2:hover {
+  background-color: #3366cc;
+  border: solid 1px #3366cc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  width: 48%;
+  text-decoration: none;
+}
+
 .card-button-red {
   background-color: #eb0000;
   border: none;
