@@ -22,21 +22,28 @@
         </div>
     </div>
     <div class="card-container">
+        <div class="card-100">
+            <div class="card-title">Categorias</div><br>
+                <a class="card-button-2" href="{{ route('notes.index') }}">Todas as notas</a>
+                @foreach($categories as $categorie)
+                    <a class="card-button-2" href="{{ route('notes.indexbycategorie', $categorie->id) }}">{{ $categorie->name }}</a>
+                @endforeach
+        </div>
         @if (count($notes) > 0)
             <div class="card-100">
                 <div class="card-title">Deseja criar uma nova anotação?</div><br>
-                <a href="notes/create" class="card-button">Criar anotação</a>
-                <a href="categories" class="card-button">Criar categoria</a>
+                <a href="{{ route('notes.index.create') }}" class="card-button">Criar anotação</a>
+                <a href="{{ route('categories.index') }}" class="card-button">Criar categoria</a>
             </div>
             @foreach ($notes as $note)
                 <div class="card" style="color: {{ $note->color }}; background-color: {{ $note->background_color }}">
                     <div class="card-title">{{ $note->title }}
                         @if ($note->favorite === 1)
-                            <a style="color: {{ $note->color }};" href="notes/unfavorite/{{ $note->id }}">
+                            <a style="color: {{ $note->color }};" href="{{ route('notes.unfavorite', $note->id) }}">
                                 <i class="fa-solid fa-star"></i>
                             </a>
                         @else
-                            <a style="color: {{ $note->color }};" href="notes/favorite/{{ $note->id }}">
+                            <a style="color: {{ $note->color }};" href="{{ route('notes.favorite', $note->id) }}">
                                 <i class="fa-regular fa-star"></i>
                             </a>
                         @endif

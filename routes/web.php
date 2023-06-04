@@ -36,6 +36,7 @@ Route::group(['prefix' => 'user'], function() {
 
 Route::group(['prefix' => 'notes'], function() {
     Route::get('', [NotesController::class, 'index'])->name('notes.index')->middleware('auth');
+    Route::get('categorie/{categorieid}', [NotesController::class, 'indexByCategorie'])->name('notes.indexbycategorie')->middleware('auth');
     Route::post('', [NotesController::class, 'create'])->name('notes.create')->middleware('auth');
     Route::get('create', [NotesController::class, 'createview'])->name('notes.index.create')->middleware('auth');
     Route::get('delete/{note}', [NotesController::class, 'delete'])->name('notes.delete')->middleware('auth');
