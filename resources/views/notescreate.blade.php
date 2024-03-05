@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-        <link rel="stylesheet" href="/public/css/app.css">
+        <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div class="card-container">
         <div class="card-50">
-            <div class="card-title-principal">Personotes v1.0</div>
+            <div class="card-title-principal"><img src="/img/logo.png"></div>
         </div>
         <div class="card-50">
             <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> </div>

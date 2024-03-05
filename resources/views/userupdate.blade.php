@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Personotes - Cadastro</title>
-    <link rel="stylesheet" href="/public/css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div class="card-container">
         <div class="card-100">
-            <div class="card-title-principal">Personotes v1.0</div>
+            <div class="card-title-principal"><img src="/img/logo.png"></div>
         </div>
     </div>
     <div class="container">

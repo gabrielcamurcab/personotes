@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
-    <link rel="stylesheet" href="/public/css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 </head>
 
 <body>
     <div class="card-container">
         <div class="card-50">
-            <div class="card-title-principal">Personotes v1.0</div>
+            <div class="card-title-principal"><img src="/img/logo.png"></div>
         </div>
         <div class="card-50">
             <div class="card-title"> {{ Auth::user()->name }} | <a href="auth/logout" class="card-button-red">Sair</a> |
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="card-container">
-        <div class="card-100">
+        <div class="card-100-content">
             <div class="card-title">Categorias</div><br>
                 <a class="card-button-2" href="{{ route('notes.index') }}">Todas as notas</a>
                 @foreach($categories as $categorie)
@@ -30,7 +30,7 @@
                 @endforeach
         </div>
         @if (count($notes) > 0)
-            <div class="card-100">
+            <div class="card-100-content">
                 <div class="card-title">Deseja criar uma nova anotação?</div><br>
                 <a href="{{ route('notes.index.create') }}" class="card-button">Criar anotação</a>
                 <a href="{{ route('categories.index') }}" class="card-button">Criar categoria</a>
@@ -63,7 +63,7 @@
                 </div>
             @endforeach
         @else
-            <div class="card-100">
+            <div class="card-100-content">
                 <div class="card-title">Você ainda não tem anotações</div><br>
                 <a href="notes/create" class="card-button">Criar anotação</a>
             </div>
