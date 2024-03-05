@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="public/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 </head>
 
@@ -49,7 +49,7 @@
                         @endif
                     </div>
                     <div class="card-text">{!! $note->text !!}</div>
-                    <strong>Categoria: </strong> 
+                    <strong>Categoria: </strong>
                     @if ($note->categorieName)
                         {{ $note->categorieName }}
                     @else

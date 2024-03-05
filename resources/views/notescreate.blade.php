@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PersoNotes - Notas</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/public/css/app.css">
 </head>
 <body>
     <div class="card-container">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personotes - App de Anotações</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/public/css/index.css">
 </head>
 <body>
     <header>
@@ -27,17 +27,17 @@
             <h2>Recursos incríveis</h2>
             <ul>
                 <li>
-                    <img src="img/feature-1.png" alt="Recursos incríveis">
+                    <img src="/public/img/feature-1.png" alt="Recursos incríveis">
                     <h3>Edição rápida</h3>
                     <p>Edite suas anotações rapidamente e sem esforço.</p>
                 </li>
                 <li>
-                    <img src="img/feature-2.png" alt="Recursos incríveis">
+                    <img src="/public/img/feature-2.png" alt="Recursos incríveis">
                     <h3>Acesso em qualquer lugar</h3>
                     <p>Acesse suas anotações de qualquer dispositivo conectado à Internet.</p>
                 </li>
                 <li>
-                    <img src="img/feature-3.png" alt="Recursos incríveis">
+                    <img src="/public/img/feature-3.png" alt="Recursos incríveis">
                     <h3>Guarde suas ideias!</h3>
                     <p>Mantenha suas ideias guardadas em uma plataforma segura e versátil.</p>
                 </li>
