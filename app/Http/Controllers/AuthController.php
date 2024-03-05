@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\UserHasBeenTakenException;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\WelcomeMail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -17,7 +19,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors([
                 'password' => 'A senha deve ter pelo menos uma letra maiúscula, uma letra minúscula e um número.'
@@ -41,7 +43,9 @@ class AuthController extends Controller
             'password' => $pass,
         ]);
 
-        return redirect()->route('login');
+        Mail::to($user->email)->send(new WelcomeMail($user));
+
+        return view ('login', ['message' => 'Conta criada com sucesso! Verifique seu e-mail.']);
     }
     public function login(Request $request): RedirectResponse
     {
@@ -49,13 +53,13 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
- 
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+
             return redirect()->intended('notes');
         }
- 
+
         return back()->withErrors([
             'email' => 'O email/senha inseridos estão incorretos.',
         ])->onlyInput('email');
