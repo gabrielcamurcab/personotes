@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Personotes - Login</title>
     <link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body>
     <div class="card-container">
         <div class="card-100">
@@ -20,6 +22,9 @@
             @error('email')
                 <div class="alert-danger">{{ $message }}</div>
             @enderror
+            @if (isset($message))
+                <div class="alert-success">{{ $message }}</div>
+            @endif
             <input type="email" name="email" placeholder="E-mail">
             <input type="password" name="password" placeholder="Senha">
             <input type="submit" value="Login">
@@ -27,4 +32,5 @@
         </form>
     </div>
 </body>
+
 </html>

@@ -45,7 +45,7 @@ class AuthController extends Controller
 
         Mail::to($user->email)->send(new WelcomeMail($user));
 
-        return redirect()->route('login');
+        return view ('login', ['message' => 'Conta criada com sucesso! Verifique seu e-mail.']);
     }
     public function login(Request $request): RedirectResponse
     {
