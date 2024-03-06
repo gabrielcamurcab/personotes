@@ -17,24 +17,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', function() {return view('index');});
+Route::get('', function () {
+    return view('index');
+});
 
-Route::get('/login', function() {return view('login');})->name('login');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
-Route::get('/cadastro', function() {return view('register');})->name('cadastro');
+Route::get('/cadastro', function () {
+    return view('register');
+})->name('cadastro');
 
-Route::group(['prefix' => 'auth'], function() {
+Route::get('/forgot-password', function () {
+    return view('forgotpassword');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->middleware('guest')->name('password.forgot');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('resetpassword', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+
+Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::group(['prefix' => 'user'], function() {
+Route::group(['prefix' => 'user'], function () {
     Route::get('update', [UserController::class, 'updateuser'])->name('user.index.update')->middleware('auth');
     Route::post('update', [UserController::class, 'update'])->name('user.update');
 });
 
-Route::group(['prefix' => 'notes'], function() {
+Route::group(['prefix' => 'notes'], function () {
     Route::get('', [NotesController::class, 'index'])->name('notes.index')->middleware('auth');
     Route::get('categorie/{categorieid}', [NotesController::class, 'indexByCategorie'])->name('notes.indexbycategorie')->middleware('auth');
     Route::post('', [NotesController::class, 'create'])->name('notes.create')->middleware('auth');
@@ -46,12 +64,10 @@ Route::group(['prefix' => 'notes'], function() {
     Route::get('unfavorite/{note}', [NotesController::class, 'unfavorite'])->name('notes.unfavorite')->middleware('auth');
 });
 
-Route::group(['prefix' => 'categories'], function() {
+Route::group(['prefix' => 'categories'], function () {
     Route::get('', [CategoriesController::class, 'index'])->name('categories.index')->middleware('auth');
     Route::post('', [CategoriesController::class, 'create'])->name('categories.create')->middleware('auth');
     Route::get('delete/{categorie}', [CategoriesController::class, 'delete'])->name('categories.delete')->middleware('auth');
     Route::get('update/{categorie}', [CategoriesController::class, 'updateview'])->name('categories.index.update')->middleware('auth');
     Route::post('update', [CategoriesController::class, 'update'])->name('categories.update')->middleware('auth');
 });
-
-

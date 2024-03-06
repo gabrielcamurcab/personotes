@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personotes - Login</title>
+    <title>Personotes - Criar nova senha</title>
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
@@ -16,25 +16,22 @@
         </div>
     </div>
     <div class="container">
-        <h2>Faça login</h2>
-        <form class="login" method="POST" action="{{ route('auth.login') }}">
+        <h2>Criar nova senha</h2>
+        <form class="login" method="POST" action="{{ route('password.update') }}">
             @csrf
             @error('email')
                 <div class="alert-danger">{{ $message }}</div>
             @enderror
-            @if (isset($message))
-                <div class="alert-success">{{ $message }}</div>
-            @endif
             @if (session()->has('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
             @endif
             <input type="email" name="email" placeholder="E-mail">
-            <input type="password" name="password" placeholder="Senha">
-            <a href="forgot-password">Esqueci a senha</a><br><br>
-            <input type="submit" value="Login">
-            <a href="cadastro">Cadastrar-se</a>
+            <input type="password" name="password" placeholder="Nova senha">
+            <input type="password" name="password_confirmation" placeholder="Repita a nova senha">
+            <input type="hidden" name="token" value="{{ $token }}">
+            <input type="submit" value="Redefinir senha">
         </form>
     </div>
 </body>
