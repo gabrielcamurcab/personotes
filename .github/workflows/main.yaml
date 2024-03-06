@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup credentials
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+        run: |
+          echo "username=${{ secrets.USERNAME }}" > credentials.txt
+          echo "password=${{ secrets.PASSWORD }}" >> credentials.txt
+          echo "server_ip=${{ secrets.SERVER_IP }}" >> credentials.txt
+
+      - name: Deploy
+        run: |
+          ssh -F credentials.txt ${{ secrets.SERVER_IP }} "
+            cd personotes.ocamurca.com && git pull && composer install && php artisan optimize
+          "
