@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Mail\WelcomeMail;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,5 +114,17 @@ class AuthController extends Controller
     return $status === Password::PASSWORD_RESET
                 ? redirect()->route('login')->with('message', 'Senha redefinida com sucesso!')
                 : back()->withErrors(['email' => [__($status)]]);
+    }
+
+    public function VerifyEmail(EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect()->route('notes.index');
+    }
+
+    public function ResendEmailVerification(Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('message', 'Um novo link de verificação foi enviado para seu email!');
     }
 }
